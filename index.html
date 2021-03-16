@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>don't touch me</title>
+</head>
+ <script>
+ y1=0;y2=0;y3=0;numy=290;puntos=0;numero=0;finalizacion=0;movimientoenemigos=0;
+ limiteabajo1=0;limitearriba2=0; limiteabajo2=0;limiteabajo3=0;jugadorlimiteabajo=0;temporizador=0;nada=0;
+ </script>
+
+<style>
+.body
+{
+  position:absolute;
+  top: 80px;
+  left: 720px;
+  width: 400px;
+  height: 70px;
+  border-left: 1px solid white;
+    border-right: 1px solid white;
+  border-top: 1px solid white;
+    border-bottom: 1px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  font-family: Ink Free;
+  color: white;
+  background-color: rgba(0, 0, 0, .5);
+}
+
+.tiempo
+{
+  position:absolute;
+  top: 80px;
+  left: 220px;
+  width: 400px;
+  height: 70px;
+  border-left: 1px solid white;
+    border-right: 1px solid white;
+  border-top: 1px solid white;
+    border-bottom: 1px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  font-family: Ink Free;
+  color: white;
+  background-color: rgba(0, 0, 0, .5);
+}
+  .zonadejuego
+
+{
+  position: absolute;
+  left:150px; 
+  top:200px;
+  width: 1050px;
+  height: 400px;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+  border-top: 1px solid white;
+    border-bottom: 1px solid white;
+  font-size: 100px;
+  font-family: Ink Free;
+  color: white;
+  background-color: rgba(0, 0, 0, .1);
+}
+
+  .zonadeljugador
+
+{
+  position: relative;
+  left:92%; 
+  top:0%;
+  width: 8%;
+  height: 100%;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  font-size: 150px;
+  background-color: none;
+
+}
+
+.cuadrito
+{
+  position:relative;
+  left: 3%;
+  width: 80px;
+  height: 80px;
+  background-image: url("nave.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bodytitulo
+{
+  position: absolute;
+  left:720px; 
+  top:50px;
+  width: 400px;
+  height: 30px;
+  border-left: 1px solid white;
+    border-right: 1px solid white;
+  border-top: 1px solid white;
+    border-bottom: 1px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  font-family: Ink Free;
+  color: white;
+  background-color: rgba(0, 0, 0, .7);
+}
+
+.tiempotitulo
+{
+  position: absolute;
+  left:220px; 
+  top:50px;
+  width: 400px;
+  height: 30px;
+  border-left: 1px solid white;
+    border-right: 1px solid white;
+  border-top: 1px solid white;
+    border-bottom: 1px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  font-family: Ink Free;
+  color: white;
+  background-color: rgba(0, 0, 0, .7);
+}
+
+
+  .rejugar
+  {
+  position: absolute;
+  top: 270px;
+  left: 1270px;
+  text-decoration: none;
+  padding: 10px;
+  font-weight: 800;
+  font-size: 20px;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  font-family: Ink Free;
+  color: white;
+  background-image: url("zonadejuego.jfif");
+  }
+
+  .enemigo1
+{
+  position:absolute;
+  height: 25px;
+  width: 50px;
+}
+
+.enemigo2
+{
+  position:absolute;
+  width: 50px;
+  height: 25px;
+}
+
+.enemigo3
+{
+  position:absolute;
+  width: 50px;
+  height: 25px; 
+}
+
+ .volver
+  {
+  position: absolute;
+  top: 300px;
+  left: 60px;
+  text-decoration: none;
+  padding: 10px;
+  font-weight: 800;
+  font-size: 20px;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  font-family: Ink Free;
+  color: white;
+  background-image: url("zonadejuego.jfif");
+  color: white;
+  }
+
+.controles
+
+{
+  position: absolute;
+  left:150px; 
+  top:650px;
+  width: 1050px;
+  height: 100px;
+  border-left: 1px solid white;
+    border-right: 1px solid white;
+  border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 45px;
+  font-family: Ink Free;
+  color: white;
+  background-color: rgba(0, 0, 0, .1);
+}
+</style>
+
+<body background="fondo.jpg" style="background-repeat: no-repeat;background-size: cover;" onload="aleatorio()" onkeypress="color()" onmousemove="">
+
+<div class="zonadejuego" id="zonadejuego"> 
+<div class="zonadeljugador" id="zonadeljugador">
+<div class="cuadrito" id="cuadrito" onmousedown="color()"></div>
+</div> 
+<div class="enemigo1" id="enemigo1"></div>
+<div class="enemigo2" id="enemigo2"></div>
+<div class="enemigo3" id="enemigo3"></div>
+</div>
+
+<div class="body" id="body"></div>
+<div class="bodytitulo" id="bodytitulo">Puntaje</div> 
+
+
+<div class="tiempo" id="tiempo"></div>
+<div class="tiempotitulo" id="tiempotitulo">¡Resiste!</div>
+
+<a class="volver" href="https://isajara.github.io/periodo1/">V<br>O<br>L<br>V<br>E<br>R</a>
+<a class="rejugar" href="javascript:location.reload()">R<br>E<br>I<br>N<br>T<br>E<br>N<br>T<br>A<br>R</a>
+
+<div class="controles" id="controles">W para subir, S para bajar y solo 1 minuto para ganar!</div>
+
+<script>
+
+  function cuenta()
+  {   
+    if(numero<=61)
+    {
+    numero=numero+1;
+    cuadrito=document.getElementById('cuadrito');
+    tiempo.innerHTML=numero;
+      if(numero==61)
+       {
+        nada=nada+7;
+      final();
+       }
+    }
+      
+  }
+
+  function enemigos()
+  {
+  marcador=0;
+  x1=x1+10;
+  x2=x2+10;
+  x3=x3+10;
+   enemigo1.style.left=x1+"px";
+   enemigo2.style.left=x2+"px";
+   enemigo3.style.left=x3+"px";
+   if(x1>=1000)
+   {
+    marcador=marcador+1;
+     enemigo1.style.background="none";
+   }
+   if(x2>=1000)
+   {
+    marcador=marcador+1;
+     enemigo2.style.background="none";
+   }
+   if(x3>=1000)
+   {
+    marcador=marcador+1;
+     enemigo3.style.background="none";
+   }
+    
+    if(marcador==3)
+    {
+      aleatorio();
+      clearInterval(movimientoenemigos);
+      puntos=puntos+10;
+      body.innerHTML=puntos;
+    }
+
+       if(x1>=930&&x1<=1000 || x2>=930&&x2<=1000 || x3>=930&&x3<=1000)
+    { 
+      perder();
+    }
+
+  }
+
+function perder()
+{
+
+      limiteabajo1=y1+25;
+      limiteabajo2=y2+25;
+      limiteabajo3=y3+25;
+      jugadorlimiteabajo=numy+80;
+
+
+      if(limiteabajo1>=numy&&limiteabajo1<=jugadorlimiteabajo  ||  limiteabajo2>=numy&&limiteabajo2<=jugadorlimiteabajo  ||  limiteabajo3>=numy&&limiteabajo3<=jugadorlimiteabajo)
+      {
+         mensajeperder();
+      }
+
+      if(y1<=jugadorlimiteabajo&&y1>=numy  ||  y2<=jugadorlimiteabajo&&y2>=numy  ||  y3<=jugadorlimiteabajo&&y3>=numy)
+      {
+       mensajeperder();
+      }
+}
+
+
+
+  function aleatorio()
+  {  
+    movimientoenemigos=0;
+
+    y1=Math.floor((Math.random() * (291-10))+10);
+     enemigo1.style.top=y1+"px";
+    x1=30;
+    enemigo1.style.left=x1+"px";
+    enemigo1.style.background="white";
+
+    y2=Math.floor((Math.random() * (291-10))+10);
+     enemigo2.style.top=y2+"px";
+     x2=30;
+    enemigo2.style.left=x2+"px";
+    enemigo2.style.background="green";
+
+    y3=Math.floor((Math.random() * (291-10))+10);
+     enemigo3.style.top=y3+"px";
+     x3=30;
+    enemigo3.style.left=x3+"px";
+    enemigo3.style.background="red";
+
+    if(y1==y2||y1==y3)
+    {
+      y1=Math.floor((Math.random() * (291-10))+10);
+      enemigo1.style.top=y1+"px";
+    }
+
+     if(y2==y1||y2==y3)
+    {
+      y2=Math.floor((Math.random() * (291-10))+10);
+     enemigo2.style.top=y2+"px";
+    }
+
+     if(y3==y2||y3==y1)
+    {
+      y1=Math.floor((Math.random() * (291-10))+10);
+      enemigo1.style.top=y1+"px";
+    }
+
+
+    cuadrito.style.top=numy+"px";
+
+    cuenta=setInterval(cuenta,1000);
+    movimientoenemigos=setInterval(enemigos,25);      
+}
+
+  function color()
+{
+   
+   if(event.code=="KeyW")
+   {
+    numy=numy-5;
+    cuadrito.style.top=numy+"px";
+    if(numy<=10)
+    {
+     numy=numy+5;
+    }
+   }
+
+     if(event.code=="KeyS")
+   {
+      numy=numy+5;
+      cuadrito.style.top=numy+"px";
+      if(numy>=310)
+      {
+        numy=numy-5;
+      }
+    }
+
+}
+
+  function final()
+  {
+        clearInterval(cuenta);
+      numero="la cuenta terminó";
+      tiempo.innerHTML="La cuenta terminó";
+      cuadrito.style.background="none";
+      zonadejuego.innerHTML="...    Felicidades...  ...     ganaste     ...";
+  }
+
+  function mensajeperder()
+  {  
+      temporizador=temporizador+numero;
+     numero="Perdiste";
+     clearInterval(cuenta);
+      tiempo.innerHTML="Perdiste";
+      cuadrito.style.background="none";
+      zonadejuego.innerHTML="Puntaje:"+puntos+ "             Tiempo:"+temporizador+"         Vuelve a intentarlo";
+      if(nada>=1)
+      {
+ clearInterval(cuenta);
+      numero="la cuenta terminó";
+      tiempo.innerHTML="La cuenta terminó";
+      cuadrito.style.background="none";
+      zonadejuego.innerHTML="...    Felicidades...  ...     ganaste     ...";
+      }
+  }
+
+  
+</script>
+</body>
+</html>
